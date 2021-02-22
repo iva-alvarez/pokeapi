@@ -11,7 +11,7 @@ export const Buscador = () => {
     const OnChange = (e)  => {
         
         setBuscar(e.target.value);
-        if (e.target.value >= 999 ){
+        if (e.target.value >= 999 || e.target.value === "null" ){
             mostrarAlerta();
         }
         
