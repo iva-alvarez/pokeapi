@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { searchPokemon } from './Api'
-import swal from 'sweetalert'
+
 
 export const Buscador = () => {
 
@@ -11,10 +11,7 @@ export const Buscador = () => {
     const OnChange = (e)  => {
         
         setBuscar(e.target.value);
-        if (e.target.value >= 999 || e.target.value === "null" ){
-            mostrarAlerta();
-        }
-        
+       
        
     };
 
@@ -26,18 +23,7 @@ export const Buscador = () => {
        
     }
 
-    const mostrarAlerta = () => {
-        swal({
-            title:"No se encontro un pokemon",
-            text:"Prueba con otra busqueda",
-            icon:"error",
-            buttom:"ok",
-            dangerMode:"true",
-            timer:"3000"
-        });
-    }
   
-
 
     return (
         <>
