@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PokemonData, PokemonUrl } from './Components/Api';
 import { ObtenerPokemon } from './Components/ObtenerPokemon';
-import { Footer } from './ui/Footer';
 import { Navbar } from './ui/Navbar';
 
 
@@ -40,7 +39,7 @@ const App = () => {
         <ObtenerPokemon
         pokemon={ pokemon }
         />
-        <Footer/>
+       
       </div>
     
   )

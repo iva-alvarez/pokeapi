@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { searchPokemon } from './Api'
+import swal from 'sweetalert'
 
 export const Buscador = () => {
 
@@ -8,17 +9,32 @@ export const Buscador = () => {
     const [pokemon, setpokemon] = useState();
 
     const OnChange = (e)  => {
-        e.preventDefault();
-        setBuscar(e.target.value);
         
+        setBuscar(e.target.value);
+        if (e.target.value >= 999 ){
+            mostrarAlerta();
+        }
         
        
     };
 
+    
+
     const onClick =  async (e) => {
         const data = await searchPokemon(Buscar);
-         setpokemon(data);
-        
+        (setpokemon(data));
+       
+    }
+
+    const mostrarAlerta = () => {
+        swal({
+            title:"No se encontro un pokemon",
+            text:"Prueba con otra busqueda",
+            icon:"error",
+            buttom:"ok",
+            dangerMode:"true",
+            timer:"3000"
+        });
     }
   
 
@@ -67,9 +83,9 @@ export const Buscador = () => {
                                         </div>
                                         
                                         <div className=" w-1/3  mt-6 mr-20 space-x-4 ">
-                                            {pokemon.types.map( poke => {
+                                            {pokemon.types.map( (poke, id ) => {
                                                 return (
-                                                    <p className="mt-2  p-4 rounded-full bg-red-400 py-2 px-6
+                                                    <p key={ id } className="mt-2  p-4 rounded-full bg-red-400 py-2 px-6
                                                     text-sm text-white font-semibold inline capitalize ">
                                                         {poke.type.name}
                                                     </p>
